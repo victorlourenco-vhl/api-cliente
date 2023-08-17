@@ -24,18 +24,56 @@ public class Servico implements Serializable {
 
 	@Length(min = 10, max = 150, message = "A descrição deve ter entre 10 e 150 caracteres")
 	private String descricao;
-	
+
 	@NotNull(message = "O valor do serviço deve ser preenchido")
 	private BigDecimal valor;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
-	
+
 	public Servico() {
-		
+
 	}
-	
-	
+
+	public Servico(Integer id, String descricao, BigDecimal valor, Cliente cliente) {
+		super();
+		this.id = id;
+		this.descricao = descricao;
+		this.valor = valor;
+		this.cliente = cliente;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 }

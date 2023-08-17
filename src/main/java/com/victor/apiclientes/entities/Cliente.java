@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -72,7 +73,14 @@ public class Cliente implements Serializable {
 		return dataCadastro;
 	}
 
+	
 	public void setDataCadastro(LocalDate dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
+	
+	@PrePersist
+	public void dataCadastro() {
+		setDataCadastro(LocalDate.now());
+	}
+	
 }
