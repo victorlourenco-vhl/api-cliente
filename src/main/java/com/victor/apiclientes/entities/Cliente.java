@@ -2,6 +2,7 @@ package com.victor.apiclientes.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -9,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -27,6 +29,9 @@ public class Cliente implements Serializable {
 	private String cpf;
 
 	private LocalDate dataCadastro;
+	
+	@OneToMany(mappedBy = "cliente")
+	private List<Servico> servicos;
 
 	public Cliente() {
 
