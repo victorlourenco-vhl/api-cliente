@@ -18,7 +18,7 @@ public class ApiClientesApplication {
 	@Bean
 	public CommandLineRunner run(@Autowired ClienteRepository rep) {
 		return args -> {
-			Cliente obj = new Cliente(null, "Victor", "50894664832");
+			Cliente obj = new Cliente(null, "Victor", "43233656084");
 			rep.save(obj);
 			
 		};
