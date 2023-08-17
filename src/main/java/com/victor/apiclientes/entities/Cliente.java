@@ -26,7 +26,7 @@ public class Cliente implements Serializable {
 	@NotNull(message = "O nome deve ser preenchido")
 	private String nome;
 
-	@CPF
+	@CPF(message = "CPF inválido")
 	private String cpf;
 
 	private LocalDate dataCadastro;
