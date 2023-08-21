@@ -16,6 +16,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.victor.apiclientes.entities.Cliente;
 import com.victor.apiclientes.repositories.ClienteRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/clientes")
 public class ClienteResource {
@@ -25,7 +27,7 @@ public class ClienteResource {
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Cliente cadastrar(@RequestBody Cliente obj) {
+	public Cliente cadastrar(@RequestBody @Valid Cliente obj) {
 		Cliente newObj = clienteRepo.save(obj);
 		return newObj;
 	}
@@ -50,7 +52,7 @@ public class ClienteResource {
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void atualizar(@PathVariable Integer id, @RequestBody Cliente obj) {
+	public void atualizar(@PathVariable Integer id, @RequestBody @Valid Cliente obj) {
 		clienteRepo
 		.findById(id)
 		.map(cliente -> {

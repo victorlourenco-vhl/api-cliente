@@ -26,17 +26,18 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@NotEmpty(message = "O nome deve ser preenchido")
+	@NotEmpty(message = "{campo.nome.obrigatorio}")
 	private String nome;
 
-	@Column(unique  = true)
-	@CPF(message = "CPF inválido")
+	@Column(unique = true)
+	@CPF(message = "{campo.cpf.validacao}")
+	@NotEmpty(message = "{campo.cpf.obrigatorio}")
 	private String cpf;
 
 	@Column(updatable = false)
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataCadastro;
-	
+
 	@OneToMany(mappedBy = "cliente")
 	private List<Servico> servicos;
 
@@ -79,14 +80,13 @@ public class Cliente implements Serializable {
 		return dataCadastro;
 	}
 
-	
 	public void setDataCadastro(LocalDate dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	
+
 	@PrePersist
 	public void dataCadastro() {
 		setDataCadastro(LocalDate.now());
 	}
-	
+
 }
