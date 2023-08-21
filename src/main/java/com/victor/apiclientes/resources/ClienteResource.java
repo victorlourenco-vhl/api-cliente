@@ -35,7 +35,8 @@ public class ClienteResource {
 	@GetMapping("{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	public Cliente acharPorId(@PathVariable Integer id) {
-		return clienteRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		return clienteRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+
 	}
 	
 	@DeleteMapping("{id}")
@@ -60,7 +61,7 @@ public class ClienteResource {
 			clienteRepo.save(obj);
 			return Void.TYPE;
 		})
-		.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
 	}
 
 }
