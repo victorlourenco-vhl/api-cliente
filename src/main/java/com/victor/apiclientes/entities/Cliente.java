@@ -33,6 +33,7 @@ public class Cliente implements Serializable {
 	@CPF(message = "CPF inválido")
 	private String cpf;
 
+	@Column(updatable = false)
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataCadastro;
 	
